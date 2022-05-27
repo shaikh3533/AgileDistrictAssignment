@@ -1,0 +1,19 @@
+.button {
+    border-bottom: 3px solid white !important;
+    background-color: transparent;
+    border: none;
+    color: white !important;
+    transition: ease-in-out;
+}
+
+button.active {
+    color: rgb(206, 107, 41) !important;
+    border-bottom: 3px solid rgb(206, 107, 41) !important;
+    transform: scale(1.06);
+}
+
+.button:hover {
+    color: rgb(206, 107, 41) !important;
+    transform: scale(1.04);
+    border-bottom: 3px solid rgb(206, 107, 41) !important;
+}
