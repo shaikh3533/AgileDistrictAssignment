@@ -11,7 +11,7 @@ function Navbar() {
                     <Link href='/'>
                         <button className='btn bg_Insta fs-2 text-light p-2 m-3'>Images Page</button>
                     </Link>
-                    <Link href='/Profile'>
+                    <Link href='/ProfilePage'>
                         <button className='btn bg_Insta fs-2 text-light p-2 m-3'>Profile Page</button>
                     </Link>
                 </ul>

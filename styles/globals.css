@@ -50,16 +50,16 @@ a {
 }
 
 .text_Insta {
-  color: rgb(206, 107, 41) !important;
+  color: rgb(247, 130, 53) !important;
 }
 
 /* Styles For Tabs Pannel */
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: #3c9eff !important;
+  color: rgb(247, 130, 53) !important;
 }
 
 .css-1aquho2-MuiTabs-indicator,
 .css-10d9dml-MuiTabs-indicator {
-  background-color: #3c9eff !important;
+  background-color: rgb(247, 130, 53) !important;
 }

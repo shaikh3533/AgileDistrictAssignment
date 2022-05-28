@@ -14,34 +14,8 @@ import SkeletonLoader from './Components/SkeletonLoader'
 export default function Home() {
 
   const [imageList, setImageList] = useState([])
-  const [imageVisible, setImageVisible] = useState(6)
+  const [imageVisible, setImageVisible] = useState(4)
   const [hasMore, sethasMore] = useState(true)
-  // const [isLoading, setIsLoading] = useState(true)
-  // const [items, setItems] = useState(Array.from({ length: 20 }))
-
-  // state = {
-  //   items: Array.from({ length: 20 })
-  // };
-
-
-
-  //   <InfiniteScroll
-  //   dataLength={this.state.items.length}
-  //   next={this.fetchMoreData}
-  //   hasMore={true}
-  //   loader={<h4>Loading...</h4>}
-  // >
-  //   {this.state.items.map((i, index) => (
-  //     <div style={style} key={index}>
-  //       div - #{index}
-  //     </div>
-  //   ))}
-  // </InfiniteScroll>
-  //   setTimeout(() => {
-  //     setIsLoading(false)
-  //   }, 3000);
-  // })
-
 
   useEffect(() => {
     GetData.ImagesData().then(res => {
@@ -59,7 +33,7 @@ export default function Home() {
 
     setTimeout(() => {
       setImageVisible(imageVisible + 4)
-    }, 3000)
+    }, 1500)
   };
   return (
     <>
@@ -77,7 +51,7 @@ export default function Home() {
             loader={
               <SkeletonLoader />
             }
-            endMessage={<h1 className='text-center my-5 fw-bolder text-warning'>No more Images to Load <FaRegSadTear /></h1>}
+            endMessage={<h1 className='text-center my-5 fw-bolder text_Insta'>No more Images to Load <FaRegSadTear /></h1>}
           >
 
 
