@@ -63,3 +63,9 @@ a {
 .css-10d9dml-MuiTabs-indicator {
   background-color: rgb(247, 130, 53) !important;
 }
+
+/* Styles For Infinite Scrolling */
+
+.infinite-scroll-component{
+  overflow: hidden !important;
+}

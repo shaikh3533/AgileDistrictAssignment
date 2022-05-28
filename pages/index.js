@@ -51,11 +51,11 @@ export default function Home() {
             loader={
               <SkeletonLoader />
             }
-            endMessage={<h1 className='text-center my-5 fw-bolder text_Insta'>No more Images to Load <FaRegSadTear /></h1>}
+            endMessage={<h1 className='text-center py-5 fw-bolder text_Insta'>No more Images to Load <FaRegSadTear /></h1>}
           >
 
 
-            <div className='row g-5'>
+            <div className='row gy-5'>
               {
                 imageList.slice(0, imageVisible).map(each => {
                   return (
