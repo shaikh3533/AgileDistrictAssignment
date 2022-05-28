@@ -20,7 +20,7 @@ function CardComponent(props) {
                 < p className='fs-1 text-light'>
                     <img src={props.each.userImageURL} className={`me-2 rounded-circle ${classes.avatar}`} alt="user" />
                     {props.each.user}</p>
-                <img src={props.each.previewURL} className='w-100' alt='image' />
+                <img src={props.each.previewURL} className='w-100' style={{ height: '450px' }} alt='image' />
                 <div className='d-inline-flex w-100 text-light'>
                     {props.each.likes === like ?
                         < p className='fs-1'><FaRegHeart className='mb-1' onClick={handleChange} /> {like}</p>

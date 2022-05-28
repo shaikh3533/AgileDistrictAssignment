@@ -44,11 +44,22 @@ a {
   border-radius: 20px;
 }
 
-.fw_bolder{
+.fw_bolder {
   font-size: 35px;
   font-weight: 800;
 }
 
 .text_Insta {
   color: rgb(206, 107, 41) !important;
+}
+
+/* Styles For Tabs Pannel */
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #3c9eff !important;
+}
+
+.css-1aquho2-MuiTabs-indicator,
+.css-10d9dml-MuiTabs-indicator {
+  background-color: #3c9eff !important;
 }
