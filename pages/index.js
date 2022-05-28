@@ -1,55 +1,66 @@
 import React from 'react'
 import classes from '../styles/Home.module.css'
-import Link from "next/link"
 import { useEffect, useState } from 'react'
 import GetData from './api/GetData'
 import CardComponent from './Components/CardComponent'
 import Navbar from './Components/Navbar'
 import ProfileHeader from './Components/ProfileHeader'
-import { Skeleton } from '@mui/material'
 import Footer from './Components/Footer'
+import InfiniteScroll from "react-infinite-scroll-component";
+import { FaRegSadTear } from "@react-icons/all-files/fa/FaRegSadTear";
+import SkeletonLoader from './Components/SkeletonLoader'
+
 
 export default function Home() {
 
   const [imageList, setImageList] = useState([])
   const [imageVisible, setImageVisible] = useState(6)
-  const [isLoading, setIsLoading] = useState(true)
+  const [hasMore, sethasMore] = useState(true)
+  // const [isLoading, setIsLoading] = useState(true)
+  // const [items, setItems] = useState(Array.from({ length: 20 }))
 
   // state = {
   //   items: Array.from({ length: 20 })
   // };
-  
-  // setTimeout(() => {
-  //   this.setState({
-  //     items: this.state.items.concat(Array.from({ length: 20 }))
-  //   });
-  // }, 100);
 
-//   <InfiniteScroll
-//   dataLength={this.state.items.length}
-//   next={this.fetchMoreData}
-//   hasMore={true}
-//   loader={<h4>Loading...</h4>}
-// >
-//   {this.state.items.map((i, index) => (
-//     <div style={style} key={index}>
-//       div - #{index}
-//     </div>
-//   ))}
-// </InfiniteScroll>
+
+
+  //   <InfiniteScroll
+  //   dataLength={this.state.items.length}
+  //   next={this.fetchMoreData}
+  //   hasMore={true}
+  //   loader={<h4>Loading...</h4>}
+  // >
+  //   {this.state.items.map((i, index) => (
+  //     <div style={style} key={index}>
+  //       div - #{index}
+  //     </div>
+  //   ))}
+  // </InfiniteScroll>
+  //   setTimeout(() => {
+  //     setIsLoading(false)
+  //   }, 3000);
+  // })
 
 
   useEffect(() => {
     GetData.ImagesData().then(res => {
       console.log({ res })
       setImageList(res.data.hits)
-      const timer = setTimeout(() => {
-        setIsLoading(false)
-      }, 3000);
     })
-    console.log(isLoading, 'dnmflk')
 
   }, [])
+
+  const fetchMoreData = () => {
+    if (imageVisible >= 20) {
+      sethasMore(false);
+      return;
+    }
+
+    setTimeout(() => {
+      setImageVisible(imageVisible + 4)
+    }, 3000)
+  };
   return (
     <>
       <Navbar />
@@ -58,45 +69,32 @@ export default function Home() {
         <div className='container w-100 d-flex my-5'>
           <h1 className='mx-auto text-light'>Images Loaded with the API from pixabay.com (website)</h1>
         </div>
-        <div className='row g-5'>
-          {
-            imageList.slice(0, imageVisible).map(each => {
-              return (
-                <>
-                  <div className='col-md-6'>
-                    {isLoading ?
-                      <div className={`${classes.card} d-flex h-100 flex-column`}>
-                        <div style={{ flex: "1 1 auto" }}>
-                          <div className='d-inline-flex my-3'>
-                            <Skeleton variant="circular" width={60} height={60} />
-                            <Skeleton variant="text" width={200} height={60} className='mx-4' />
-                          </div>
-                          <Skeleton variant="rectangular" style={{ width: 'fitContent', height: '350px' }} />
-                          <Skeleton variant="text" style={{ width: 'fitContent' }} height={60} className='mx-4' />
-                        </div>
-                      </div>
-                      :
+        <div className='my-5'>
+          <InfiniteScroll
+            dataLength={imageVisible}
+            next={fetchMoreData}
+            hasMore={hasMore}
+            loader={
+              <SkeletonLoader />
+            }
+            endMessage={<h1 className='text-center my-5 fw-bolder text-warning'>No more Images to Load <FaRegSadTear /></h1>}
+          >
+
+
+            <div className='row g-5'>
+              {
+                imageList.slice(0, imageVisible).map(each => {
+                  return (
+                    <div className='col-md-6'>
                       <CardComponent each={each} />
-                    }
-                  </div>
-                </>
-              )
-            })
-          }
-        </div>
-        <div className="text-center my-5">
-          {imageList.length > 3 && (
-            imageVisible < imageList.length ? (
-              <button className="btn bg_Insta fs-2 text-light p-2 m-3" onClick={(() => setImageVisible(imageVisible + 6))}>
-                load More
-              </button>
-            ) : (
-              <button className="btn bg_Insta fs-2 text-light p-2 m-3" onClick={(() => setImageVisible(6))}>
-                Show Less
-              </button>
-            )
-          )}
-        </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+
+          </InfiniteScroll>
+        </div >
       </div >
       <Footer />
     </>

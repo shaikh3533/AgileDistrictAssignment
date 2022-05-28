@@ -7,18 +7,6 @@ import MainTabsPannel from '../Components/MainTabsPannel'
 
 
 export default function index() {
-  // const [about, setAbout] = useState(false)
-  // const [photos, setPhotos] = useState(true)
-  // console.log(about);
-
-  // const handleAbout = () => {
-  //   setAbout(true)
-  //   setPhotos(false)
-  // }
-  // const handlePhotos = () => {
-  //   setPhotos(true)
-  //   setAbout(false)
-  // }
 
   return (
     <div>
